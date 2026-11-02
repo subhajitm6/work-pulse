@@ -27,13 +27,21 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Include API routes
+# Include API routes under /api
 app.include_router(auth.router, prefix="/api")
 app.include_router(workspaces.router, prefix="/api")
 app.include_router(tasks.router, prefix="/api")
 app.include_router(projects.router, prefix="/api")
 app.include_router(daily_logs.router, prefix="/api")
 app.include_router(analytics.router, prefix="/api")
+
+# Also include routes without /api prefix for compatibility
+app.include_router(auth.router)
+app.include_router(workspaces.router)
+app.include_router(tasks.router)
+app.include_router(projects.router)
+app.include_router(daily_logs.router)
+app.include_router(analytics.router)
 
 
 @app.get("/health")

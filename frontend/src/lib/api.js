@@ -1,4 +1,6 @@
-const API_BASE = import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000/api';
+// Normalize base URL: ensure it ends with /api (without duplicate or trailing slashes)
+const rawBase = (import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000/api').trim().replace(/\/+$/, '');
+const API_BASE = rawBase.endsWith('/api') ? rawBase : `${rawBase}/api`;
 
 class ApiClient {
   getToken() {
