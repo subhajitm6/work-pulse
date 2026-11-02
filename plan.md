@@ -1,149 +1,247 @@
-# WorkPulse — Secure FastAPI + Supabase PostgreSQL Without JWT
+==> Downloading cache...
+==> Cloning from https://github.com/subhajitm6/work-pulse
+==> Checking out commit b92b969066a684693442fdab5e00110c7c47bbff in branch main
+==> Downloaded and extracted 26 MiB cache in 6s.
+==> Using Python version 3.14.8 (default)
+==> Docs on specifying a Python version: https://render.com/docs/python-version
+==> Installing Python version 3.14.8...
+==> Using Poetry version 2.1.3 (default)
+==> Docs on specifying a Poetry version: https://render.com/docs/poetry-version
+==> Running build command 'pip install -r requirements.txt'...
+Collecting fastapi>=0.115.0 (from -r requirements.txt (line 1))
+  Using cached fastapi-0.162.0-py3-none-any.whl.metadata (26 kB)
+Collecting uvicorn>=0.32.0 (from uvicorn[standard]>=0.32.0->-r requirements.txt (line 2))
+  Using cached uvicorn-0.54.0-py3-none-any.whl.metadata (6.6 kB)
+Collecting pydantic>=2.10.0 (from -r requirements.txt (line 3))
+  Using cached pydantic-2.14.2-py3-none-any.whl.metadata (137 kB)
+Collecting pydantic-settings>=2.6.0 (from -r requirements.txt (line 4))
+  Using cached pydantic_settings-2.16.2-py3-none-any.whl.metadata (4.0 kB)
+Collecting sqlalchemy>=2.0.36 (from -r requirements.txt (line 5))
+  Using cached sqlalchemy-2.1.6-cp314-cp314-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (9.7 kB)
+Collecting psycopg>=3.2.3 (from psycopg[binary]>=3.2.3->-r requirements.txt (line 6))
+  Using cached psycopg-3.3.6-py3-none-any.whl.metadata (4.4 kB)
+Collecting alembic>=1.14.0 (from -r requirements.txt (line 7))
+  Using cached alembic-1.20.1-py3-none-any.whl.metadata (7.3 kB)
+Collecting pyjwt>=2.10.0 (from -r requirements.txt (line 8))
+  Using cached pyjwt-2.15.1-py3-none-any.whl.metadata (3.5 kB)
+Collecting argon2-cffi>=23.1.0 (from -r requirements.txt (line 9))
+  Using cached argon2_cffi-25.1.0-py3-none-any.whl.metadata (4.1 kB)
+Collecting python-multipart>=0.0.19 (from -r requirements.txt (line 10))
+  Using cached python_multipart-0.0.33-py3-none-any.whl.metadata (6.3 kB)
+Collecting pytest>=8.3.0 (from -r requirements.txt (line 11))
+  Using cached pytest-9.2.0-py3-none-any.whl.metadata (7.9 kB)
+Collecting httpx>=0.28.0 (from -r requirements.txt (line 12))
+  Using cached httpx-0.28.1-py3-none-any.whl.metadata (7.1 kB)
+Collecting starlette>=0.46.0 (from fastapi>=0.115.0->-r requirements.txt (line 1))
+  Using cached starlette-1.10.0-py3-none-any.whl.metadata (6.6 kB)
+Collecting typing-extensions>=4.8.0 (from fastapi>=0.115.0->-r requirements.txt (line 1))
+  Using cached typing_extensions-4.16.0-py3-none-any.whl.metadata (3.3 kB)
+Collecting typing-inspection>=0.4.2 (from fastapi>=0.115.0->-r requirements.txt (line 1))
+  Using cached typing_inspection-0.4.4-py3-none-any.whl.metadata (2.6 kB)
+Collecting annotated-doc>=0.0.2 (from fastapi>=0.115.0->-r requirements.txt (line 1))
+  Using cached annotated_doc-0.0.5-py3-none-any.whl.metadata (6.5 kB)
+Collecting opentelemetry-api>=1.44.0 (from fastapi>=0.115.0->-r requirements.txt (line 1))
+  Using cached opentelemetry_api-1.45.2-py3-none-any.whl.metadata (1.4 kB)
+Collecting click>=7.0 (from uvicorn>=0.32.0->uvicorn[standard]>=0.32.0->-r requirements.txt (line 2))
+  Using cached click-8.5.0-py3-none-any.whl.metadata (2.6 kB)
+Collecting h11>=0.8 (from uvicorn>=0.32.0->uvicorn[standard]>=0.32.0->-r requirements.txt (line 2))
+  Using cached h11-0.16.0-py3-none-any.whl.metadata (8.3 kB)
+Collecting annotated-types>=0.6.0 (from pydantic>=2.10.0->-r requirements.txt (line 3))
+  Using cached annotated_types-0.8.0-py3-none-any.whl.metadata (15 kB)
+Collecting pydantic-core==2.50.2 (from pydantic>=2.10.0->-r requirements.txt (line 3))
+  Using cached pydantic_core-2.50.2-cp314-cp314-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata (6.5 kB)
+Collecting python-dotenv>=1.2.2 (from pydantic-settings>=2.6.0->-r requirements.txt (line 4))
+  Using cached python_dotenv-1.2.4-py3-none-any.whl.metadata (29 kB)
+Collecting Mako (from alembic>=1.14.0->-r requirements.txt (line 7))
+  Using cached mako-1.4.3-py3-none-any.whl.metadata (2.9 kB)
+Collecting argon2-cffi-bindings (from argon2-cffi>=23.1.0->-r requirements.txt (line 9))
+  Using cached argon2_cffi_bindings-26.1.0-cp310-abi3-manylinux_2_26_x86_64.manylinux_2_28_x86_64.whl.metadata (7.5 kB)
+Collecting iniconfig>=2 (from pytest>=8.3.0->-r requirements.txt (line 11))
+  Using cached iniconfig-2.3.1-py3-none-any.whl.metadata (2.8 kB)
+Collecting packaging>=24 (from pytest>=8.3.0->-r requirements.txt (line 11))
+  Using cached packaging-26.3-py3-none-any.whl.metadata (3.5 kB)
+Collecting pluggy<2,>=1.6 (from pytest>=8.3.0->-r requirements.txt (line 11))
+  Using cached pluggy-1.7.0-py3-none-any.whl.metadata (5.0 kB)
+Collecting pygments>=2.15 (from pytest>=8.3.0->-r requirements.txt (line 11))
+  Using cached pygments-2.21.0-py3-none-any.whl.metadata (2.5 kB)
+Collecting anyio (from httpx>=0.28.0->-r requirements.txt (line 12))
+  Using cached anyio-4.16.0-py3-none-any.whl.metadata (4.7 kB)
+Collecting certifi (from httpx>=0.28.0->-r requirements.txt (line 12))
+  Using cached certifi-2026.10.23-py3-none-any.whl.metadata (2.5 kB)
+Collecting httpcore==1.* (from httpx>=0.28.0->-r requirements.txt (line 12))
+  Using cached httpcore-1.0.9-py3-none-any.whl.metadata (21 kB)
+Collecting idna (from httpx>=0.28.0->-r requirements.txt (line 12))
+  Using cached idna-3.20-py3-none-any.whl.metadata (7.2 kB)
+Collecting psycopg-binary==3.3.6 (from psycopg[binary]>=3.2.3->-r requirements.txt (line 6))
+  Using cached psycopg_binary-3.3.6-cp314-cp314-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata (2.7 kB)
+Collecting httptools>=0.8.0 (from uvicorn[standard]>=0.32.0->-r requirements.txt (line 2))
+  Using cached httptools-0.9.0-cp314-cp314-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl.metadata (3.5 kB)
+Collecting pyyaml>=5.1 (from uvicorn[standard]>=0.32.0->-r requirements.txt (line 2))
+  Using cached pyyaml-6.0.3-cp314-cp314-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (2.4 kB)
+Collecting uvloop>=0.15.1 (from uvicorn[standard]>=0.32.0->-r requirements.txt (line 2))
+  Using cached uvloop-0.23.0-cp314-cp314-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (5.1 kB)
+Collecting watchfiles>=0.20 (from uvicorn[standard]>=0.32.0->-r requirements.txt (line 2))
+  Using cached watchfiles-1.3.0-cp310-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (4.9 kB)
+Collecting websockets>=13.0 (from uvicorn[standard]>=0.32.0->-r requirements.txt (line 2))
+  Using cached websockets-17.4-cp314-cp314-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl.metadata (6.3 kB)
+Collecting cffi>=2 (from argon2-cffi-bindings->argon2-cffi>=23.1.0->-r requirements.txt (line 9))
+  Using cached cffi-2.1.1-cp314-cp314-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata (2.5 kB)
+Collecting pycparser (from cffi>=2->argon2-cffi-bindings->argon2-cffi>=23.1.0->-r requirements.txt (line 9))
+  Using cached pycparser-3.12-py3-none-any.whl.metadata (9.7 kB)
+Collecting MarkupSafe>=2.0 (from Mako->alembic>=1.14.0->-r requirements.txt (line 7))
+  Using cached markupsafe-3.0.4-cp314-cp314-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (2.7 kB)
+Using cached fastapi-0.162.0-py3-none-any.whl (148 kB)
+Using cached uvicorn-0.54.0-py3-none-any.whl (87 kB)
+Using cached pydantic-2.14.2-py3-none-any.whl (490 kB)
+Using cached pydantic_core-2.50.2-cp314-cp314-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (2.2 MB)
+Using cached pydantic_settings-2.16.2-py3-none-any.whl (81 kB)
+Using cached sqlalchemy-2.1.6-cp314-cp314-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (4.6 MB)
+Using cached psycopg-3.3.6-py3-none-any.whl (215 kB)
+Using cached alembic-1.20.1-py3-none-any.whl (270 kB)
+Using cached pyjwt-2.15.1-py3-none-any.whl (33 kB)
+Using cached argon2_cffi-25.1.0-py3-none-any.whl (14 kB)
+Using cached python_multipart-0.0.33-py3-none-any.whl (32 kB)
+Using cached pytest-9.2.0-py3-none-any.whl (411 kB)
+Using cached pluggy-1.7.0-py3-none-any.whl (27 kB)
+Using cached httpx-0.28.1-py3-none-any.whl (73 kB)
+Using cached httpcore-1.0.9-py3-none-any.whl (78 kB)
+Using cached annotated_doc-0.0.5-py3-none-any.whl (5.3 kB)
+Using cached annotated_types-0.8.0-py3-none-any.whl (13 kB)
+Using cached click-8.5.0-py3-none-any.whl (125 kB)
+Using cached h11-0.16.0-py3-none-any.whl (37 kB)
+Using cached iniconfig-2.3.1-py3-none-any.whl (7.6 kB)
+Using cached opentelemetry_api-1.45.2-py3-none-any.whl (60 kB)
+Using cached packaging-26.3-py3-none-any.whl (129 kB)
+Using cached psycopg_binary-3.3.6-cp314-cp314-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (5.2 MB)
+Using cached pygments-2.21.0-py3-none-any.whl (1.3 MB)
+Using cached python_dotenv-1.2.4-py3-none-any.whl (23 kB)
+Using cached starlette-1.10.0-py3-none-any.whl (80 kB)
+Using cached anyio-4.16.0-py3-none-any.whl (134 kB)
+Using cached idna-3.20-py3-none-any.whl (69 kB)
+Using cached typing_extensions-4.16.0-py3-none-any.whl (45 kB)
+Using cached typing_inspection-0.4.4-py3-none-any.whl (14 kB)
+Using cached httptools-0.9.0-cp314-cp314-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl (514 kB)
+Using cached pyyaml-6.0.3-cp314-cp314-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (794 kB)
+Using cached uvloop-0.23.0-cp314-cp314-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (4.4 MB)
+Using cached watchfiles-1.3.0-cp310-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (458 kB)
+Using cached websockets-17.4-cp314-cp314-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl (226 kB)
+Using cached argon2_cffi_bindings-26.1.0-cp310-abi3-manylinux_2_26_x86_64.manylinux_2_28_x86_64.whl (26 kB)
+Using cached cffi-2.1.1-cp314-cp314-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (221 kB)
+Using cached certifi-2026.10.23-py3-none-any.whl (135 kB)
+Using cached mako-1.4.3-py3-none-any.whl (80 kB)
+Using cached markupsafe-3.0.4-cp314-cp314-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (23 kB)
+Using cached pycparser-3.12-py3-none-any.whl (62 kB)
+Installing collected packages: websockets, uvloop, typing-extensions, pyyaml, python-multipart, python-dotenv, pyjwt, pygments, pycparser, psycopg-binary, psycopg, pluggy, packaging, MarkupSafe, iniconfig, idna, httptools, h11, click, certifi, annotated-types, annotated-doc, uvicorn, typing-inspection, sqlalchemy, pytest, pydantic-core, opentelemetry-api, Mako, httpcore, cffi, anyio, watchfiles, starlette, pydantic, httpx, argon2-cffi-bindings, alembic, pydantic-settings, fastapi, argon2-cffi
 
-## Role
+Successfully installed Mako-1.4.3 MarkupSafe-3.0.4 alembic-1.20.1 annotated-doc-0.0.5 annotated-types-0.8.0 anyio-4.16.0 argon2-cffi-25.1.0 argon2-cffi-bindings-26.1.0 certifi-2026.10.23 cffi-2.1.1 click-8.5.0 fastapi-0.162.0 h11-0.16.0 httpcore-1.0.9 httptools-0.9.0 httpx-0.28.1 idna-3.20 iniconfig-2.3.1 opentelemetry-api-1.45.2 packaging-26.3 pluggy-1.7.0 psycopg-3.3.6 psycopg-binary-3.3.6 pycparser-3.12 pydantic-2.14.2 pydantic-core-2.50.2 pydantic-settings-2.16.2 pygments-2.21.0 pyjwt-2.15.1 pytest-9.2.0 python-dotenv-1.2.4 python-multipart-0.0.33 pyyaml-6.0.3 sqlalchemy-2.1.6 starlette-1.10.0 typing-extensions-4.16.0 typing-inspection-0.4.4 uvicorn-0.54.0 uvloop-0.23.0 watchfiles-1.3.0 websockets-17.4
 
-Act as a senior FastAPI backend engineer and database security specialist.
+[notice] A new release of pip is available: 26.2.1 -> 26.2.2
+[notice] To update, run: pip install --upgrade pip
+==> Uploading build...
+==> Uploaded in 2.6s. Compression took 1.8s
+==> Build successful 🎉
+==> Deploying...
+==> Setting WEB_CONCURRENCY=1 by default, based on available CPUs in the instance
+==> Running 'uvicorn app.main:app --host 0.0.0.0 --port $PORT'
+Traceback (most recent call last):
+  File "/opt/render/project/src/.venv/lib/python3.14/site-packages/pydantic/networks.py", line 1040, in import_email_validator
+    import email_validator
+ModuleNotFoundError: No module named 'email_validator'
 
-My application, WorkPulse, uses:
-- Frontend: React + Tailwind CSS + Framer Motion
-- Backend: FastAPI
-- Database: Supabase-hosted PostgreSQL
-- ORM: SQLAlchemy
-- Migrations: Alembic, if already configured
+The above exception was the direct cause of the following exception:
 
-**Important:** My application does not use JWT authentication. Do not add JWT, introduce a new authentication system, or rewrite the login flow without first inspecting the existing implementation.
-
-My Supabase tables are showing an "UNRESTRICTED" label. I want to understand and fix the underlying database security configuration while preserving my existing application.
-
-## 1. Inspect the existing implementation
-
-Before modifying any files:
-
-- Inspect the backend folder structure and existing source code.
-- Identify how registration, login, logout, and session management currently work, if implemented.
-- Determine whether authentication uses server-side sessions, cookies, HTTP Basic authentication, an existing authentication provider, or no authentication.
-- Inspect SQLAlchemy models, database sessions, database connection configuration, and Alembic migrations.
-- List all tables and their relationships.
-- Determine which tables have RLS enabled and which database role FastAPI uses to connect to Supabase.
-- Inspect existing authorization checks and frontend API calls.
-
-First provide a concise audit report. Do not assume authentication exists merely because login pages are present.
-
-## 2. Preserve the current authentication system
-
-Do not introduce JWT or replace the existing authentication mechanism.
-
-If authentication already exists:
-- Preserve the existing login and logout behavior.
-- Reuse the existing authentication and session mechanism.
-- Add reusable FastAPI dependencies to identify the authenticated user.
-- Protect private API endpoints using the existing authentication mechanism.
-- Validate the user's identity on the server.
-- Never trust a user ID submitted by the frontend as proof of ownership.
-
-If authentication does not exist:
-- Report that finding clearly.
-- Explain that database authorization alone cannot establish which human user is making an API request.
-- Recommend a suitable authentication approach, but do not silently implement a new authentication system or make existing endpoints unusable.
-
-## 3. Investigate the Supabase "UNRESTRICTED" label
-
-Inspect every application table in the `public` schema.
-
-Determine:
-- Whether RLS is enabled.
-- Which roles have table privileges.
-- Whether the FastAPI database role has `BYPASSRLS` or superuser privileges.
-- Whether existing RLS policies are appropriate for the actual connection model.
-- Whether private tables can be accessed through Supabase's Data API.
-- Whether any existing configuration exposes private user data.
-
-Do not assume that enabling RLS automatically protects queries made by a privileged backend connection.
-
-Enable RLS on appropriate tables using reviewed SQL or migrations. Do not create permissive policies such as `USING (true)` just to remove the warning.
-
-Do not drop, recreate, truncate, or reset existing tables.
-
-## 4. Secure workspace and record access
-
-WorkPulse supports multiple workspaces. Users must only access workspaces they own or are authorized to use.
-
-Review and secure all applicable endpoints for:
-- Workspaces and memberships.
-- Projects.
-- Tasks.
-- Daily work logs.
-- Activity records.
-- Dashboard summaries.
-- Work efficiency analytics.
-
-Ensure that:
-- Every private request is authenticated using the existing mechanism, if one exists.
-- Workspace access is checked server-side.
-- Projects and tasks cannot be accessed by guessing or changing record IDs.
-- Daily logs follow the existing ownership rules.
-- Dashboard and analytics queries are scoped to authorized records.
-- Updates and deletes verify authorization before changing data.
-- Cross-workspace references are validated.
-
-Use SQLAlchemy queries scoped to authorized workspaces. Do not fetch all records and rely on frontend filtering.
-
-## 5. Database connection and least privilege
-
-Keep the existing FastAPI + SQLAlchemy connection to Supabase PostgreSQL.
-
-- Store credentials in backend environment variables.
-- Never expose database credentials in React.
-- Keep `.env` out of version control.
-- Verify the actual database role used by FastAPI.
-- Avoid privileged roles for routine operations when a restricted role is practical.
-- If RLS is used for defense in depth, design its policies around the actual database identity and connection lifecycle.
-- Never trust a client-supplied user ID as the database's authenticated user identity.
-- Ensure transaction-scoped security context cannot leak between pooled connections.
-
-If the current connection role bypasses RLS, explain the implications and recommend a safe configuration before changing permissions.
-
-## 6. Keep the frontend functional
-
-- Preserve existing API routes and request/response formats wherever possible.
-- Keep React communicating with FastAPI.
-- Do not move database operations directly into the browser to bypass backend authorization.
-- Do not add JWT bearer-token handling unless the existing application actually uses it.
-- Preserve existing workspace switching, task management, projects, daily logs, dashboard, and analytics features.
-- Make only changes necessary for security and compatibility.
-
-## 7. Test the changes
-
-Add or update tests for:
-
-1. Unauthenticated requests cannot access protected endpoints, where authentication is implemented.
-2. Authorized users can access their own permitted records.
-3. Users cannot access another user's private workspace.
-4. Changing task or project IDs cannot expose another user's records.
-5. Unauthorized updates and deletes are rejected.
-6. Workspace relationships are validated.
-7. Dashboard and analytics data are correctly scoped.
-8. Existing login and logout flows continue working.
-9. The actual database role and RLS configuration match the intended security model.
-
-Use isolated test data. Do not run destructive tests against production data.
-
-## 8. Deliverables
-
-Provide:
-- The authentication mechanism discovered in the existing project.
-- The cause of the Supabase "UNRESTRICTED" label.
-- The database role and RLS audit results.
-- The files changed and why.
-- Any SQL or Alembic migrations required.
-- Tests executed and actual results.
-- Exact Windows PowerShell commands for testing and running FastAPI.
-- Any manual Supabase dashboard steps still required.
-
-## Acceptance criteria
-
-The application must continue using its existing authentication approach. No JWT system should be introduced automatically.
-
-Private WorkPulse data must be protected by server-side authorization, database permissions must be reviewed, and RLS must be configured appropriately for the actual connection model.
-
-Begin by inspecting the current implementation. Do not replace working authentication, reset the database, or claim security tests passed unless they were actually executed.
+Traceback (most recent call last):
+  File "/opt/render/project/src/.venv/bin/uvicorn", line 6, in <module>
+    sys.exit(main())
+             ~~~~^^
+  File "/opt/render/project/src/.venv/lib/python3.14/site-packages/click/core.py", line 1631, in __call__
+    return self.main(*args, **kwargs)
+           ~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/opt/render/project/src/.venv/lib/python3.14/site-packages/click/core.py", line 1552, in main
+    rv = self.invoke(ctx)
+  File "/opt/render/project/src/.venv/lib/python3.14/site-packages/click/core.py", line 1415, in invoke
+    return ctx.invoke(self.callback, **ctx.params)
+           ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/render/project/src/.venv/lib/python3.14/site-packages/click/core.py", line 910, in invoke
+    return callback(*args, **kwargs)
+  File "/opt/render/project/src/.venv/lib/python3.14/site-packages/uvicorn/main.py", line 448, in main
+    run(
+    ~~~^
+        app,
+        ^^^^
+    ...<49 lines>...
+        reset_contextvars=reset_contextvars,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/opt/render/project/src/.venv/lib/python3.14/site-packages/uvicorn/main.py", line 620, in run
+    config.load_app()
+    ~~~~~~~~~~~~~~~^^
+  File "/opt/render/project/src/.venv/lib/python3.14/site-packages/uvicorn/config.py", line 434, in load_app
+    return import_from_string(self.app)
+  File "/opt/render/project/src/.venv/lib/python3.14/site-packages/uvicorn/importer.py", line 19, in import_from_string
+    module = importlib.import_module(module_str)
+  File "/opt/render/project/python/Python-3.14.8/lib/python3.14/importlib/__init__.py", line 88, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1406, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1371, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1342, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 938, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 763, in exec_module
+  File "<frozen importlib._bootstrap>", line 491, in _call_with_frames_removed
+  File "/opt/render/project/src/backend/app/main.py", line 6, in <module>
+    from app.api.routes import auth, workspaces, tasks, projects, daily_logs, analytics
+  File "/opt/render/project/src/backend/app/api/routes/auth.py", line 7, in <module>
+    from app.schemas.schemas import UserCreate, UserLogin, Token, UserOut, UserUpdate
+  File "/opt/render/project/src/backend/app/schemas/schemas.py", line 7, in <module>
+    class UserBase(BaseModel):
+    ...<3 lines>...
+        avatar: Optional[str] = None
+  File "/opt/render/project/src/.venv/lib/python3.14/site-packages/pydantic/_internal/_model_construction.py", line 253, in __new__
+    complete_model_class(
+    ~~~~~~~~~~~~~~~~~~~~^
+        cls,
+        ^^^^
+    ...<3 lines>...
+        create_model_module=_create_model_module,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/opt/render/project/src/.venv/lib/python3.14/site-packages/pydantic/_internal/_model_construction.py", line 628, in complete_model_class
+    schema = gen_schema.generate_schema(cls)
+  File "/opt/render/project/src/.venv/lib/python3.14/site-packages/pydantic/_internal/_generate_schema.py", line 826, in generate_schema
+    schema = self._generate_schema_inner(obj, origin)
+  File "/opt/render/project/src/.venv/lib/python3.14/site-packages/pydantic/_internal/_generate_schema.py", line 1131, in _generate_schema_inner
+    return self._model_schema(obj)
+           ~~~~~~~~~~~~~~~~~~^^^^^
+  File "/opt/render/project/src/.venv/lib/python3.14/site-packages/pydantic/_internal/_generate_schema.py", line 953, in _model_schema
+    {k: self._generate_md_field_schema(k, v, decorators) for k, v in fields.items()},
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "/opt/render/project/src/.venv/lib/python3.14/site-packages/pydantic/_internal/_generate_schema.py", line 1263, in _generate_md_field_schema
+    schema, metadata = self._common_field_schema(name, field_info, decorators)
+                       ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/render/project/src/.venv/lib/python3.14/site-packages/pydantic/_internal/_generate_schema.py", line 1320, in _common_field_schema
+    schema = self._apply_annotations(
+        source_type,
+        annotations + validators_from_decorators,
+    )
+  File "/opt/render/project/src/.venv/lib/python3.14/site-packages/pydantic/_internal/_generate_schema.py", line 2328, in _apply_annotations
+    schema = get_inner_schema(source_type)
+  File "/opt/render/project/src/.venv/lib/python3.14/site-packages/pydantic/_internal/_schema_generation_shared.py", line 84, in __call__
+    schema = self._handler(source_type)
+  File "/opt/render/project/src/.venv/lib/python3.14/site-packages/pydantic/_internal/_generate_schema.py", line 2303, in inner_handler
+    schema = self._generate_schema_from_get_schema_method(obj, source_type)
+  File "/opt/render/project/src/.venv/lib/python3.14/site-packages/pydantic/_internal/_generate_schema.py", line 1013, in _generate_schema_from_get_schema_method
+    schema = get_schema(
+        source, CallbackGetCoreSchemaHandler(self._generate_schema_inner, self, ref_mode=ref_mode)
+    )
+  File "/opt/render/project/src/.venv/lib/python3.14/site-packages/pydantic/networks.py", line 1080, in __get_pydantic_core_schema__
+    import_email_validator()
+    ~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/opt/render/project/src/.venv/lib/python3.14/site-packages/pydantic/networks.py", line 1042, in import_email_validator
+    raise ImportError("email-validator is not installed, run `pip install 'pydantic[email]'`") from e
+ImportError: email-validator is not installed, run `pip install 'pydantic[email]'`
+==> Exited with status 1
+==> Common ways to troubleshoot your deploy: https://render.com/docs/troubleshooting-deploys
+==> Running 'uvicorn app.main:app --host 0.0.0.0 --port $PORT'
